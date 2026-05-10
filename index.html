@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SawitID — Estimasi Produksi Panen Sawit</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">🌴 SawitID</div>
+  <p class="tagline">Identifikasi & Estimasi Produksi Kelapa Sawit</p>
+</header>
+
+<main>
+
+  <!-- INPUT SECTION -->
+  <section class="card" id="input-section">
+    <h2>Data Kebun Sawit</h2>
+    <p class="hint">Isi data di bawah ini untuk mendapatkan estimasi produksi panen</p>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label>📐 Luas Lahan (Hektar)</label>
+        <input type="number" id="luas" placeholder="contoh: 10" min="0.1" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>🌿 Jarak Tanam</label>
+        <select id="jarak">
+          <option value="9x9">9×9 meter (Segi Tiga)</option>
+          <option value="9x8">9×8 meter (Persegi)</option>
+          <option value="8x8">8×8 meter (Padat)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>📅 Umur Tanaman (Tahun)</label>
+        <input type="number" id="umur" placeholder="contoh: 5" min="1" max="30">
+      </div>
+      <div class="form-group">
+        <label>🌱 Varietas Bibit</label>
+        <select id="varietas">
+          <option value="unggul">Tenera Unggul (DxP)</option>
+          <option value="lokal">Lokal Biasa</option>
+          <option value="dura">Dura</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>💧 Sistem Pengairan</label>
+        <select id="irigasi">
+          <option value="hujan">Tadah Hujan</option>
+          <option value="irigasi">Irigasi Teknis</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>🧪 Kondisi Pemupukan</label>
+        <select id="pupuk">
+          <option value="optimal">Optimal (Rutin)</option>
+          <option value="sedang">Sedang (Kadang-kadang)</option>
+          <option value="kurang">Kurang (Jarang)</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="hitungEstimasi()">
+      🔍 Hitung Estimasi Panen
+    </button>
+  </section>
+
+  <!-- RESULT SECTION -->
+  <section class="card hidden" id="result-section">
+    <h2>📊 Hasil Estimasi Produksi</h2>
+    <div id="result-content"></div>
+    <div class="action-row">
+      <button class="btn-secondary" onclick="cetakLaporan()">🖨️ Cetak Laporan</button>
+      <button class="btn-secondary" onclick="resetForm()">🔄 Hitung Ulang</button>
+    </div>
+  </section>
+
+  <!-- KALENDER PANEN -->
+  <section class="card hidden" id="calendar-section">
+    <h2>📅 Perkiraan Jadwal Panen per Bulan</h2>
+    <div id="calendar-content"></div>
+  </section>
+
+  <!-- INFO REFERENSI -->
+  <section class="card">
+    <h2>📚 Panduan Produktivitas Sawit</h2>
+    <div class="tabel-referensi">
+      <table>
+        <thead>
+          <tr><th>Umur (Tahun)</th><th>Fase</th><th>Produksi TBS (ton/ha/tahun)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1–2</td><td>Belum Produksi</td><td>0</td></tr>
+          <tr><td>3</td><td>Mulai Berbuah</td><td>4–6</td></tr>
+          <tr><td>4–5</td><td>Produksi Awal</td><td>10–15</td></tr>
+          <tr><td>6–10</td><td>Produksi Prima</td><td>18–25</td></tr>
+          <tr><td>11–20</td><td>Produksi Stabil</td><td>15–22</td></tr>
+          <tr><td>21–25</td><td>Produksi Menurun</td><td>10–18</td></tr>
+          <tr><td>>25</td><td>Tua / Replanting</td><td>&lt;10</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>SawitID — Dibuat untuk petani kelapa sawit Indonesia 🇮🇩</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
